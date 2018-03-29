@@ -6,28 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.udacity.myapplication.MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/partypicture" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Happy Birthday Steven!"
-        android:textSize="32dp"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/white"
         android:paddingTop="16dp"
         android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="From George"
-        android:textSize="24dp"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/white"
         android:paddingRight="20dp"
         android:paddingBottom="36dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/partypicture" />
 </RelativeLayout>
