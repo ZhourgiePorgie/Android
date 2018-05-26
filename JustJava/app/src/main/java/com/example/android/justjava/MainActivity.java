@@ -23,6 +23,8 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private int quantity = 2;
+    private boolean hasWhippedCream = false;
+    private boolean hasChocolate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         EditText Name = (EditText) findViewById(R.id.name_text_input);
 
-        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        boolean hasChocolate = chocolateCheckBox.isChecked();
+        hasWhippedCream = whippedCreamCheckBox.isChecked();
+        hasChocolate = chocolateCheckBox.isChecked();
         String name = Name.getText().toString();
 
         int price = calculatePrice(quantity, 5);
@@ -51,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the "+" button is clicked.
      */
     public void increment(View view){
-        quantity += 1;
+        if (quantity < 100) {
+            quantity += 1;
+        }
         displayQuantity(quantity);
     }
 
@@ -59,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the "0-" button is clicked.
      */
     public void decrement(View view){
-        quantity -= 1;
+        if (quantity > 1) {
+            quantity -= 1;
+        }
         displayQuantity(quantity);
     }
 
@@ -95,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
      * @return total price
      */
     private int calculatePrice(int quantity, int pricePerCup) {
+        if (hasWhippedCream) {
+            pricePerCup += 1;
+        }
+        if (hasChocolate) {
+            pricePerCup += 2;
+        }
         int price = quantity * pricePerCup;
         return price;
     }
