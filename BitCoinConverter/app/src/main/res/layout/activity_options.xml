@@ -10,24 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="61dp">
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="43dp">
 
         <TextView
+            android:id="@+id/greeting_screen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Hello, which currency would you like to convert to today?"
+            android:text="Didn't receive a name..."
             android:textSize="24dp" />
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown">
+            android:spinnerMode="dropdown"></Spinner>
 
-        </Spinner>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="convert"
+            android:text="Confrim" />
 
+        <TextView
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing" />
 
     </LinearLayout>
 
