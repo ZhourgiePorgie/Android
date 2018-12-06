@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private final String MY_PREFS_NAME = "myPreferenceFile";
-    private SharedPreferences sharedpreferences;
     private String currency;
     private TextView message_view;
     private String message;
@@ -25,7 +23,7 @@ public class ResultActivity extends AppCompatActivity {
         //Receives the currency and rate and updates the message
         Intent intent = getIntent();
         currency = intent.getExtras().get("currency").toString();
-        rate = intent.getFloatExtra("rate", 0.5f);
+        rate = intent.getFloatExtra("rate", 0f);
         message_view = (TextView) findViewById(R.id.message);
         message = "One bitcoin is worth " + rate +  " in " + currency;
         message_view.setText(message);

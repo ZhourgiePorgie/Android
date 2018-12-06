@@ -22,30 +22,24 @@ import cz.msebera.android.httpclient.Header;
 public class OptionsActivity extends AppCompatActivity {
 
     private AsyncHttpClient client;
-    private final String MY_PREFS_NAME = "myPreferenceFile";
-    private SharedPreferences sharedpreferences;
     private String currency;
     private String name;
     private String greeting;
     private float rate;
+    private String baseURL1 = "https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=";
+    private String baseURL2 = "&amount=1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        // Saves name from previous call
+        //Saves name from previous call
         Intent intent = getIntent();
         name = intent.getExtras().getString("namekey");
         greeting = "Hello " + name + "!\nWhich currency would you like to convert to today?";
         TextView greetView = (TextView) findViewById(R.id.greeting_screen);
         greetView.setText(greeting);
-
-//        // Creates dropdown menu
-//        Spinner dropdown = findViewById(R.id.spinner);
-//        String[] choices = new String[]{"1", "2", "3", "4"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, choices);
-//        dropdown.setAdapter(adapter);
     }
 
     /* Remembers the chosen currency and moves to next screen */
@@ -54,20 +48,16 @@ public class OptionsActivity extends AppCompatActivity {
         EditText currencyInput = findViewById(R.id.currency_input);
         currency = currencyInput.getText().toString();
 
+        String URL = baseURL1 + currency + baseURL2;
         //Fetches rate from with the API
         client = new AsyncHttpClient();
-        client.get("https://apiv2.bitcoinaverage.com/constants/exchangerates/global", new JsonHttpResponseHandler() {
+        client.get(URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     super.onSuccess(statusCode, headers, response);
-                    if (response.get("rates") instanceof JSONObject) {
-                        Log.i("check", "JSON");
-                    }
-                    String jsonResponse = response.getJSONObject("rates").getJSONObject(currency).get("rate").toString();
+                    String jsonResponse = response.get("price").toString();
                     rate = Float.parseFloat(jsonResponse);
-                    Log.i("tag", "onSuccess: " + jsonResponse);
-                    Log.i("tag", "onSuccess: " + rate);
 
                     //Moves to next screen passing currency and rate as extras
                     Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
