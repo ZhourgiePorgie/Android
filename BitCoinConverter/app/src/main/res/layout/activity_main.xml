@@ -16,6 +16,7 @@
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica"
             android:hint="Please enter your name" />
 
         <Button
@@ -23,12 +24,6 @@
             android:layout_height="wrap_content"
             android:text="Submit"
             android:onClick="submitName" />
-
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nothing" />
 
     </LinearLayout>
 

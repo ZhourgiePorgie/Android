@@ -1,14 +1,12 @@
 package com.example.android.bitcoinconverter;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -42,13 +40,19 @@ public class OptionsActivity extends AppCompatActivity {
         greetView.setText(greeting);
     }
 
+    /* Opens the browser to a list of currency codes */
+    public void openBrowser(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.iban.com/currency-codes"));
+        startActivity(browserIntent);
+    }
+
     /* Remembers the chosen currency and moves to next screen */
     public void convert(View view) throws JSONException{
         //Takes user input for currency choice
         EditText currencyInput = findViewById(R.id.currency_input);
         currency = currencyInput.getText().toString();
-
         String URL = baseURL1 + currency + baseURL2;
+
         //Fetches rate from with the API
         client = new AsyncHttpClient();
         client.get(URL, new JsonHttpResponseHandler() {

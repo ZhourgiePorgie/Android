@@ -1,11 +1,8 @@
 package com.example.android.bitcoinconverter;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
@@ -25,7 +22,7 @@ public class ResultActivity extends AppCompatActivity {
         currency = intent.getExtras().get("currency").toString();
         rate = intent.getFloatExtra("rate", 0f);
         message_view = (TextView) findViewById(R.id.message);
-        message = "One bitcoin is worth " + rate +  " in " + currency;
+        message = "One bitcoin is worth " + rate +  " " + currency;
         message_view.setText(message);
     }
 

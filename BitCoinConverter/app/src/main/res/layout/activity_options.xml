@@ -17,13 +17,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/helvetica"
             android:text="Didn't receive a name..."
             android:textSize="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="16sp"
+            android:fontFamily="@font/helvetica"
+            android:text="Click here for a list of currency codes"
+            android:textSize="16dp"
+            android:onClick="openBrowser"/>
 
         <EditText
             android:id="@+id/currency_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica"
             android:hint="Enter a currency code" />
 
         <Button
