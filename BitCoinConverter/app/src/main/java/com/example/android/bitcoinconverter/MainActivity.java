@@ -23,8 +23,6 @@ import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private PersistentCookieStore cookieStore;
-//    private AsyncHttpClient client;
     private final String MY_PREFS_NAME = "myPreferenceFile";
     private SharedPreferences sharedpreferences;
     private String namekey = "namekey";
@@ -35,38 +33,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sharedpreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
 
+        //Checks if a name is present and skips name screen if a name is already present
+        sharedpreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         if (sharedpreferences.contains(namekey)) {
             name = sharedpreferences.getString(namekey, null);
             Intent intent = new Intent(this, OptionsActivity.class);
             intent.putExtra(namekey, name);
             startActivity(intent);
         }
-
-//        client = new AsyncHttpClient();
-//        cookieStore = new PersistentCookieStore(this);
-//        client.setCookieStore(cookieStore);
-//        CookieManager cm = new CookieManager(cookieStore, CookiePolicy.ACCEPT_ALL);
     }
 
     /* Saves the name as a cookie and moves to the next screen */
     public void submitName(View view) {
+        //Saves inputted name
         sharedpreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         EditText nameInput = findViewById(R.id.name_input);
         name = nameInput.getText().toString();
         SharedPreferences.Editor edit = sharedpreferences.edit();
-        // Log.d("nametag", name);
         edit.putString(namekey, name);
         edit.commit();
 
-
-//        BasicClientCookie nameCookie = new BasicClientCookie("name", name);
-//        cookieStore.addCookie(nameCookie);
-
-//        TextView greetView = (TextView) findViewById(R.id.test);
-//        greetView.setText(name);
-
+        //Passes name to next screen
         Intent intent = new Intent(this, OptionsActivity.class);
         intent.putExtra(namekey, name);
         startActivity(intent);

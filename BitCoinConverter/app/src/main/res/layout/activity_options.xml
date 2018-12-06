@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="43dp">
+        android:layout_margin="16sp">
 
         <TextView
             android:id="@+id/greeting_screen"
@@ -21,23 +20,17 @@
             android:text="Didn't receive a name..."
             android:textSize="24dp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/currency_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"></Spinner>
+            android:hint="Enter a currency code" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="convert"
             android:text="Confrim" />
-
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nothing" />
 
     </LinearLayout>
 

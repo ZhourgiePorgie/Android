@@ -17,8 +17,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-
 /**
  * This app displays an order form to order coffee.
  */
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is called when the "0-" button is clicked.
+     * This method is called when the "-" button is clicked.
      */
     public void decrement(View view){
         if (quantity > 1) {
@@ -90,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        //TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        //priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
     /**
