@@ -2,7 +2,7 @@
 Some Android projects I've created.
 
 # HappyBirthday
-A static birthday card app that
+A static birthday card app that wishes someone a Happy Birthday!
 
 # JustJava
 Takes in a name, a selection of toppings by using checkboxes, and a quantity to produce a coffee order summary.  This order summary can then be emailed to a desired email.
